@@ -22,7 +22,7 @@ class App extends Component {
       ]
     }
   }
-
+  // hello
   getReadContent(){
     var i = 0;
       while(i < this.state.contents.length){
