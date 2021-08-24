@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import TOC from "./components/TOC";
 import ReadContent from "./components/ReadContent";
+import CreateContent from "./components/CreateContent";
 import Subject from "./components/Subject";
 import Control from "./components/Control";
 import './App.css';
 class App extends Component {  
   constructor(props){  // 초기화 담당
     super(props);
+    this.max_content_id = 3;
     this.state = {
       mode:'read',
       selected_content_id: 2,
@@ -38,6 +40,18 @@ class App extends Component {
         i++;
       }
       _article = <ReadContent title={_title} desc={_desc}></ReadContent>
+    } else if(this.state.mode === 'create'){
+      _article = <CreateContent onSubmit={function(_title, _desc){
+        // add content to this.state.contents
+        this.max_content_id++;
+        this.state.contents.push(
+          {id: this.max_content_id, title: _title, desc: _desc}
+        );
+        this.setState({
+          contents: this.state.contents
+        });
+        console.log(_title, _desc);
+      }.bind(this)}></CreateContent>
     }
     return (
       <div className="App"> 
