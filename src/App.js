@@ -86,7 +86,7 @@ class App extends Component {
     return _article;
   }
 
-  render() {  // props or state의 값이 변경되면 해당되는 component의 render 함수가 호출된다. 즉 화면이 다시 그려짐
+  render() {  
     return (
       <div className="App"> 
         <Subject 
